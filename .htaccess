@@ -1,0 +1,35 @@
+
+# AddHandler php5-cgi .html
+AddDefaultCharset UTF-8
+
+DirectoryIndex index.html
+
+# Options +FollowSymLinks
+
+
+RewriteEngine On 
+RewriteBase /
+
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://phiveleven.mx/$1 [R,L]
+
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+RewriteRule ^(.+)\.html$ /$1 [R=301]
+
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.+)/?$ /$1.php [L]
+
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.+)/?$ /$1.html [L]
+
+RewriteCond %{REQUEST_FILENAME}\.css -f
+RewriteRule ^(.+)/?$ /$1.css [L]
+
+
+RewriteRule ^index\.php$ - [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.html?/$1 [L]
+
+

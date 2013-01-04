@@ -1,0 +1,9 @@
+nav {display:none}
+
+body { font:100%/1.3 Serif }
+body > * { min-width:320px; max-width:35em;
+  margin:auto }
+
+* { margin:0; padding:0 }
+
+
